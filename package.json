@@ -1,0 +1,46 @@
+{
+  "name": "npm-cli-dir",
+  "version": "1.0.0",
+  "description": "Resolve the directory path where npm CLI is installed",
+  "repository": "shinnn/npm-cli-dir",
+  "author": "Shinnosuke Watanabe (https://github.com/shinnn)",
+  "scripts": {
+    "pretest": "eslint --config @shinnn/node-legacy index.js test.js",
+    "test": "node test.js",
+    "coverage": "istanbul cover test.js"
+  },
+  "license": "MIT",
+  "files": [
+    "index.js"
+  ],
+  "keywords": [
+    "dir",
+    "directory",
+    "folder",
+    "path",
+    "npm",
+    "npm-cli",
+    "base",
+    "resolve",
+    "find",
+    "pinpoint",
+    "promise",
+    "promises",
+    "then",
+    "async",
+    "asynchronous",
+    "asynchronously"
+  ],
+  "dependencies": {
+    "npm-cli-path": "^1.0.0",
+    "pkg-dir": "^1.0.0"
+  },
+  "devDependencies": {
+    "@shinnn/eslint-config-node-legacy": "^1.0.0",
+    "eslint": "^1.10.2",
+    "istanbul": "^0.4.1",
+    "pify": "^2.3.0",
+    "pinkie-promise": "^2.0.0",
+    "tape": "^4.2.2"
+  }
+}
