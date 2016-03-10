@@ -36,11 +36,11 @@
     "pkg-dir": "^1.0.0"
   },
   "devDependencies": {
-    "@shinnn/eslint-config-node-legacy": "^1.0.0",
-    "eslint": "^1.10.2",
-    "istanbul": "^0.4.1",
+    "@shinnn/eslint-config-node-legacy": "^2.0.0",
+    "eslint": "^2.3.0",
+    "istanbul": "^0.4.2",
     "pify": "^2.3.0",
     "pinkie-promise": "^2.0.0",
-    "tape": "^4.2.2"
+    "tape": "^4.5.1"
   }
 }
