@@ -39,7 +39,6 @@ It resolves the base path of globally installed [npm](https://github.com/npm/npm
 
 ```javascript
 const fs = require('fs');
-const path = require('path');
 const npmCliDir = require('npm-cli-dir');
 
 npmCliDir().then(dir => {
@@ -50,6 +49,4 @@ npmCliDir().then(dir => {
 
 ## License
 
-Copyright (c) 2015 - 2016 [Shinnosuke Watanabe](https://github.com/shinnn)
-
-Licensed under [the MIT License](./LICENSE).
+[The Unlicense](./LICENSE)
