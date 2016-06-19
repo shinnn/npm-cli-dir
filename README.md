@@ -45,17 +45,11 @@ const npmCliDir = require('npm-cli-dir');
 npmCliDir().then(dir => {
   fs.readdirSync(dir);
   //=> ['.mailmap', '.npmignore', '.travis.yml', 'AUTHORS', 'CHANGELOG.md', ...]
-
-  require(path.join(dir, 'package.json'));
-  //=> { name: 'npm', optionalDependencies: {}, license: 'Artistic-2.0', ... }
-
-  require(dir);
-  //=> EventEmitter { version: '3.4.1', ... }
 });
 ```
 
 ## License
 
-Copyright (c) 2015 [Shinnosuke Watanabe](https://github.com/shinnn)
+Copyright (c) 2015 - 2016 [Shinnosuke Watanabe](https://github.com/shinnn)
 
 Licensed under [the MIT License](./LICENSE).

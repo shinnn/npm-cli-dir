@@ -1,31 +1,27 @@
-'use strict';
+'use strong';
 
-var exec = require('child_process').exec;
-var path = require('path');
+const path = require('path');
 
-var npmCliDir = require('./');
-var pify = require('pify');
-var PinkiePromise = require('pinkie-promise');
-var test = require('tape');
+const execa = require('execa');
+const npmCliDir = require('.');
+const test = require('tape');
 
-var execP = pify(exec, PinkiePromise);
-
-test('npmCliDir()', function(t) {
+test('npmCliDir()', t => {
   t.plan(3);
 
   t.strictEqual(npmCliDir.name, 'npmCliDir', 'should have a function name.');
 
-  PinkiePromise.all([
-    npmCliDir().then(function(dir) {
+  Promise.all([
+    npmCliDir().then(dir => {
       t.strictEqual(path.basename(dir), 'npm', 'should resolve a directory path.');
-      return PinkiePromise.resolve(require(dir).version);
+      return Promise.resolve(require(dir).version);
     }),
-    execP('npm --version')
+    execa.stdout('npm', ['--version'])
   ])
-  .then(function(results) {
+  .then(results => {
     t.strictEqual(
       results[0],
-      results[1].trim(),
+      results[1],
       'should resolve the path right above npm\'s package.json.'
     );
   })
