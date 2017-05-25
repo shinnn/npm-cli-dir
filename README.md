@@ -4,10 +4,8 @@
 [![Build Status](https://travis-ci.org/shinnn/npm-cli-dir.svg?branch=master)](https://travis-ci.org/shinnn/npm-cli-dir)
 [![Build status](https://ci.appveyor.com/api/projects/status/e83hdqrnieckmm5c/branch/master?svg=true)](https://ci.appveyor.com/project/ShinnosukeWatanabe/npm-cli-dir/branch/master)
 [![Coverage Status](https://img.shields.io/coveralls/shinnn/npm-cli-dir.svg)](https://coveralls.io/github/shinnn/npm-cli-dir)
-[![Dependency Status](https://david-dm.org/shinnn/npm-cli-dir.svg)](https://david-dm.org/shinnn/npm-cli-dir)
-[![devDependency Status](https://david-dm.org/shinnn/npm-cli-dir/dev-status.svg)](https://david-dm.org/shinnn/npm-cli-dir#info=devDependencies)
 
-A [Node](https://nodejs.org/) module to resolve the directory path where [npm](https://www.npmjs.com/) CLI is installed
+A [Node.js](https://nodejs.org/) module to resolve the directory path where [npm](https://www.npmjs.com/) CLI is installed
 
 ```javascript
 const npmCliDir = require('npm-cli-dir');
@@ -49,4 +47,4 @@ npmCliDir().then(dir => {
 
 ## License
 
-[The Unlicense](./LICENSE)
+[Creative Commons Zero v1.0 Universal](https://creativecommons.org/publicdomain/zero/1.0/deed)
