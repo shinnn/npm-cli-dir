@@ -1,29 +1,26 @@
 'use strict';
 
-const path = require('path');
+const {basename} = require('path');
 
-const execa = require('execa');
+const getStdout = require('execa').stdout;
 const npmCliDir = require('.');
 const test = require('tape');
 
-test('npmCliDir()', t => {
-  t.plan(3);
+test('npmCliDir()', async t => {
+  const results = await Promise.all([
+    (async () => {
+      const dir = await npmCliDir();
 
-  t.strictEqual(npmCliDir.name, 'npmCliDir', 'should have a function name.');
+      t.equal(basename(dir), 'npm', 'should resolve a directory path.');
+      return require(dir).version;
+    })(),
+    getStdout('npm', ['--version'])
+  ]);
 
-  Promise.all([
-    npmCliDir().then(dir => {
-      t.strictEqual(path.basename(dir), 'npm', 'should resolve a directory path.');
-      return Promise.resolve(require(dir).version);
-    }),
-    execa.stdout('npm', ['--version'])
-  ])
-  .then(results => {
-    t.strictEqual(
-      results[0],
-      results[1],
-      'should resolve the path right above npm\'s package.json.'
-    );
-  })
-  .catch(t.fail);
+  t.equal(
+    ...results,
+    'should resolve the path right above npm\'s package.json.'
+  );
+
+  t.end();
 });
