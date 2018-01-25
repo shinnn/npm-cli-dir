@@ -1,14 +1,25 @@
 'use strict';
 
-const dirname = require('path').dirname;
+const pathLib = require('path');
+
+const dirname = pathLib.dirname;
+const join = pathLib.join;
+const resolve = pathLib.resolve;
 
 const npmCliPath = require('npm-cli-path');
-const resolveFromSilent = require('resolve-from').silent;
+const rootDir = resolve('/');
 
 const getNpmCliDir = npmCliPath().then(result => {
+  result = dirname(result);
+
   do {
-    result = dirname(result);
-  } while (resolveFromSilent(result, './package.json') === null);
+    try {
+      require.resolve(join(result, 'package.json'));
+      break;
+    } catch (_) {
+      result = dirname(result);
+    }
+  } while (result !== rootDir);
 
   return result;
 });

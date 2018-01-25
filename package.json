@@ -31,8 +31,7 @@
     "asynchronously"
   ],
   "dependencies": {
-    "npm-cli-path": "^2.0.1",
-    "resolve-from": "^4.0.0"
+    "npm-cli-path": "^2.0.1"
   },
   "devDependencies": {
     "@shinnn/eslint-config-node": "^4.0.2",
