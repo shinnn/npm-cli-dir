@@ -10,20 +10,20 @@ const npmCliPath = require('npm-cli-path');
 const rootDir = resolve('/');
 
 const getNpmCliDir = npmCliPath().then(result => {
-  result = dirname(result);
+	result = dirname(result);
 
-  do {
-    try {
-      require.resolve(join(result, 'package.json'));
-      break;
-    } catch (_) {
-      result = dirname(result);
-    }
-  } while (result !== rootDir);
+	do {
+		try {
+			require.resolve(join(result, 'package.json'));
+			break;
+		} catch (_) {
+			result = dirname(result);
+		}
+	} while (result !== rootDir);
 
-  return result;
+	return result;
 });
 
 module.exports = function npmCliDir() {
-  return getNpmCliDir;
+	return getNpmCliDir;
 };
