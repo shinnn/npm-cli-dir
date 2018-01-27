@@ -4,13 +4,14 @@ const pathLib = require('path');
 
 const dirname = pathLib.dirname;
 const join = pathLib.join;
-const resolve = pathLib.resolve;
+const parse = pathLib.parse;
 
 const npmCliPath = require('npm-cli-path');
-const rootDir = resolve('/');
 
 const getNpmCliDir = npmCliPath().then(result => {
-	result = dirname(result);
+	const path = parse(result);
+	const root = path.root;
+	result = path.dir;
 
 	do {
 		try {
@@ -19,7 +20,7 @@ const getNpmCliDir = npmCliPath().then(result => {
 		} catch (_) {
 			result = dirname(result);
 		}
-	} while (result !== rootDir);
+	} while (result !== root);
 
 	return result;
 });
