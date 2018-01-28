@@ -1,6 +1,6 @@
 {
 	"name": "npm-cli-dir",
-	"version": "2.0.1",
+	"version": "2.0.2",
 	"description": "Resolve the directory path where npm CLI is installed",
 	"repository": "shinnn/npm-cli-dir",
 	"author": "Shinnosuke Watanabe (https://github.com/shinnn)",
