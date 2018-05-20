@@ -1,17 +1,13 @@
 'use strict';
 
-const pathLib = require('path');
-
-const dirname = pathLib.dirname;
-const join = pathLib.join;
-const parse = pathLib.parse;
+const {dirname, join, parse} = require('path');
 
 const npmCliPath = require('npm-cli-path');
 
-const getNpmCliDir = npmCliPath().then(result => {
-	const path = parse(result);
-	const root = path.root;
-	result = path.dir;
+const getNpmCliDir = (async () => {
+	const path = parse(await npmCliPath());
+	const {root} = path;
+	let result = path.dir;
 
 	do {
 		try {
@@ -23,8 +19,8 @@ const getNpmCliDir = npmCliPath().then(result => {
 	} while (result !== root);
 
 	return result;
-});
+})();
 
-module.exports = function npmCliDir() {
+module.exports = async function npmCliDir() {
 	return getNpmCliDir;
 };
