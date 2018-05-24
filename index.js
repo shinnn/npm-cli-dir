@@ -1,25 +1,9 @@
 'use strict';
 
-const {dirname, join, parse} = require('path');
-
+const findPkgDir = require('find-pkg-dir');
 const npmCliPath = require('npm-cli-path');
 
-const getNpmCliDir = (async () => {
-	const path = parse(await npmCliPath());
-	const {root} = path;
-	let result = path.dir;
-
-	do {
-		try {
-			require.resolve(join(result, 'package.json'));
-			break;
-		} catch (_) {
-			result = dirname(result);
-		}
-	} while (result !== root);
-
-	return result;
-})();
+const getNpmCliDir = (async () => findPkgDir(await npmCliPath()))();
 
 module.exports = async function npmCliDir() {
 	return getNpmCliDir;
