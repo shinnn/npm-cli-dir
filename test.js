@@ -1,26 +1,56 @@
 'use strict';
 
-const {basename} = require('path');
+const {basename, resolve} = require('path');
+const {execFile} = require('child_process');
+const {promisify} = require('util');
 
-const getStdout = require('execa').stdout;
-const npmCliDir = require('.');
+const clearAllModules = require('clear-module').all;
+const pathKey = require('path-key');
 const test = require('tape');
 
 test('npmCliDir()', async t => {
+	const npmCliDir = require('.');
+
+	t.equal(
+		basename(await npmCliDir()),
+		'npm',
+		'should resolve a directory path.'
+	);
+
 	const results = await Promise.all([
 		(async () => {
 			const dir = await npmCliDir();
-
-			t.equal(basename(dir), 'npm', 'should resolve a directory path.');
-			return require(dir).version;
+			return `${require(dir).version}\n`;
 		})(),
-		getStdout('npm', ['--version'])
+		(async () => (await promisify(execFile)('npm', ['--version'], {
+			shell: process.platform === 'win32'
+		})).stdout)()
 	]);
 
 	t.equal(
 		...results,
 		'should resolve the path right above npm\'s package.json.'
 	);
+
+	t.end();
+});
+
+test('npmCliDir() in an environment where npm CLI is not installed', async t => {
+	delete process.env.npm_execpath;
+	process.env[pathKey()] = resolve('/n/o/n/e/');
+	clearAllModules();
+
+	const npmCliDir = require('.');
+
+	try {
+		await npmCliDir();
+	} catch ({code}) {
+		t.equal(
+			code,
+			'ENOENT',
+			'should fail to resolve the path.'
+		);
+	}
 
 	t.end();
 });

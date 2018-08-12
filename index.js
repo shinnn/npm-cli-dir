@@ -3,8 +3,13 @@
 const findPkgDir = require('find-pkg-dir');
 const npmCliPath = require('npm-cli-path');
 
-const getNpmCliDir = (async () => findPkgDir(await npmCliPath()))();
+let result = null;
 
 module.exports = async function npmCliDir() {
-	return getNpmCliDir;
+	if (result !== null) {
+		return result;
+	}
+
+	result = findPkgDir(await npmCliPath());
+	return result;
 };
