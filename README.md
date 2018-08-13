@@ -5,7 +5,7 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/e83hdqrnieckmm5c/branch/master?svg=true)](https://ci.appveyor.com/project/ShinnosukeWatanabe/npm-cli-dir/branch/master)
 [![Coverage Status](https://img.shields.io/coveralls/shinnn/npm-cli-dir.svg)](https://coveralls.io/github/shinnn/npm-cli-dir)
 
-A [Node.js](https://nodejs.org/) module to resolve the directory path where [npm](https://www.npmjs.com/) CLI is installed
+A [Node.js](https://nodejs.org/) module to resolve a path of the directory where [npm CLI](https://github.com/npm/cli) is installed
 
 ```javascript
 const npmCliDir = require('npm-cli-dir');
@@ -17,7 +17,7 @@ const npmCliDir = require('npm-cli-dir');
 
 ## Installation
 
-[Use npm.](https://docs.npmjs.com/cli/install)
+[Use](https://docs.npmjs.com/cli/install) [npm](https://docs.npmjs.com/getting-started/what-is-npm).
 
 ```
 npm install npm-cli-dir
@@ -33,14 +33,12 @@ const npmCliDir = require('npm-cli-dir');
 
 Return: `Promise<string>`
 
-It resolves the base path of globally installed [npm](https://github.com/npm/npm) CLI.
-
 ```javascript
-const {readFileSync} = require('fs');
+const {readdir} = require('fs').promises;
 const npmCliDir = require('npm-cli-dir');
 
 (async () => {
-  readFileSync(await npmCliDir());
+  await readdir(await npmCliDir());
   //=> ['.mailmap', '.npmignore', '.travis.yml', 'AUTHORS', 'CHANGELOG.md', ...]
 })();
 ```
