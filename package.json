@@ -1,6 +1,6 @@
 {
 	"name": "npm-cli-dir",
-	"version": "3.0.1",
+	"version": "3.0.2",
 	"description": "Resolve the directory path where npm CLI is installed",
 	"repository": "shinnn/npm-cli-dir",
 	"author": "Shinnosuke Watanabe (https://github.com/shinnn)",
@@ -32,7 +32,7 @@
 	],
 	"dependencies": {
 		"find-pkg-dir": "^1.0.1",
-		"npm-cli-path": "^3.1.0"
+		"npm-cli-path": "^3.1.1"
 	},
 	"devDependencies": {
 		"@shinnn/eslint-config-node": "^6.0.0",
