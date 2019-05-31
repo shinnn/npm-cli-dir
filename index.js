@@ -7,10 +7,11 @@ let path;
 const firstTry = (async () => {
 	try {
 		path = findPkgDir(await npmCliPath());
-		return true;
-	} catch (err) {
+	} catch {
 		return false;
 	}
+
+	return true;
 })();
 
 module.exports = async function npmCliDir() {

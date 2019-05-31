@@ -3,11 +3,11 @@
 	"version": "3.0.2",
 	"description": "Resolve the directory path where npm CLI is installed",
 	"repository": "shinnn/npm-cli-dir",
-	"author": "Shinnosuke Watanabe (https://github.com/shinnn)",
+	"author": "Watanabe Shinnosuke (https://github.com/shinnn)",
 	"license": "ISC",
 	"scripts": {
 		"pretest": "eslint .",
-		"test": "nyc node test.js"
+		"test": "coverage test.js"
 	},
 	"files": [
 		"index.js"
@@ -31,22 +31,18 @@
 		"asynchronously"
 	],
 	"dependencies": {
-		"find-pkg-dir": "^1.0.1",
-		"npm-cli-path": "^3.1.2"
+		"find-pkg-dir": "^2.0.0",
+		"npm-cli-path": "^4.0.0"
 	},
 	"devDependencies": {
-		"@shinnn/eslint-config": "^6.7.5",
-		"clear-module": "^3.0.0",
-		"eslint": "^5.8.0",
-		"nyc": "^13.1.0",
-		"nyc-config-common": "^1.0.1",
-		"path-key": "^2.0.1",
-		"tape": "^4.9.1"
+		"@shinnn/eslint-config": "^6.10.4",
+		"clear-module": "^3.2.0",
+		"coverage": "^0.3.3",
+		"eslint": "^5.16.0",
+		"path-key": "^3.1.0",
+		"testit": "^3.1.0"
 	},
 	"eslintConfig": {
 		"extends": "@shinnn"
-	},
-	"nyc": {
-		"extends": "nyc-config-common"
 	}
 }

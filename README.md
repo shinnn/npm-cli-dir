@@ -1,8 +1,8 @@
 # npm-cli-dir
 
 [![npm version](https://img.shields.io/npm/v/npm-cli-dir.svg)](https://www.npmjs.com/package/npm-cli-dir)
-[![Build Status](https://travis-ci.org/shinnn/npm-cli-dir.svg?branch=master)](https://travis-ci.org/shinnn/npm-cli-dir)
-[![Coverage Status](https://img.shields.io/coveralls/shinnn/npm-cli-dir.svg)](https://coveralls.io/github/shinnn/npm-cli-dir)
+[![Build Status](https://travis-ci.com/shinnn/npm-cli-dir.svg?branch=master)](https://travis-ci.com/shinnn/npm-cli-dir)
+[![codecov](https://codecov.io/gh/shinnn/npm-cli-dir/branch/master/graph/badge.svg)](https://codecov.io/gh/shinnn/npm-cli-dir)
 
 A [Node.js](https://nodejs.org/) module to resolve a path of the directory where [npm CLI](https://github.com/npm/cli) is installed
 
@@ -16,7 +16,7 @@ const npmCliDir = require('npm-cli-dir');
 
 ## Installation
 
-[Use](https://docs.npmjs.com/cli/install) [npm](https://docs.npmjs.com/getting-started/what-is-npm).
+[Use](https://docs.npmjs.com/cli/install) [npm](https://docs.npmjs.com/about-npm/).
 
 ```
 npm install npm-cli-dir
@@ -44,4 +44,4 @@ const npmCliDir = require('npm-cli-dir');
 
 ## License
 
-[ISC License](./LICENSE) © 2017 - 2018 Shinnosuke Watanabe
+[ISC License](./LICENSE) © 2017 - 2019 Watanabe Shinnosuke
